@@ -9,17 +9,22 @@ const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
+// const DB =
+//   'mongodb+srv://Sianwa:By2lLr9jh6V5qpGj@cluster0.el5e8.mongodb.net/natours?retryWrites=true&w=majority';
 
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
+    useUnifiedTopology: true,
     useFindAndModify: false
   })
   .then(() => console.log('DB connection successful'));
 
 // READ JSON FILE
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf8'));
+
+// const users = JSON.parse();
 
 // IMPORT DATA INTO DB
 const importData = async () => {
