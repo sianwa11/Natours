@@ -125,6 +125,13 @@ const tourSchema = new mongoose.Schema(
 );
 
 /**
+ * Improving speed with indexes
+ */
+// tourSchema.index({ price: 1 });
+tourSchema.index({ price: 1, ratingsAverage: -1 });
+tourSchema.index({ slug: 1 });
+
+/**
  * DOCUMENT MIDDLEWARE: runs before .save() and .create()
  */
 tourSchema.pre('save', function(next) {

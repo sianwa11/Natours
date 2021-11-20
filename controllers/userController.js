@@ -57,6 +57,12 @@ exports.createUser = (req, res) => {
   });
 };
 
+/**
+ * Middleware that sets the id of the current user as a request parameter
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 exports.getMe = (req, res, next) => {
   req.params.id = req.user.id;
   next();
