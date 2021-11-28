@@ -26,19 +26,22 @@ app.enable('trust proxy');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+//TODO: Look into cors
+// cors
+// app.use(
+//   cors({
+//     origin: '*',
+//     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
+//   })
+// );
+app.use(cors());
+app.options('*', cors());
+
 // 1) GLOBAL MIDDLEWARES
 // Serving static files
 // app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//TODO: Look into cors
-// cors
-app.use(
-  cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
-  })
-);
 // Set security HTTP headers
 // app.use(helmet());
 
